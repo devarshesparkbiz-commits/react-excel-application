@@ -1,5 +1,5 @@
 import { Box, Toolbar } from "@mui/material";
-import Sidebar, { sidebarWidth } from "./Sidebar";
+import Sidebar, { expandedWidth } from "./Sidebar";
 import Topbar from "./Topbar";
 
 const DashboardLayout = ({ children }) => {
@@ -12,7 +12,7 @@ const DashboardLayout = ({ children }) => {
         component="main"
         sx={{
           flexGrow: 1,
-          ml: `${sidebarWidth}px`,
+          ml: `${expandedWidth}px`,
           p: 3
         }}
       >

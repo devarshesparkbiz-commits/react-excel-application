@@ -1,0 +1,19 @@
+# ======================
+# GENERAL
+# ======================
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+
+# ======================
+# NODE / REACT
+# ======================
+node_modules/
+dist/
+build/
+.vite/
+.env
+.env.*
+!.env.example
