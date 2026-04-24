@@ -1,8 +1,13 @@
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import { expandedWidth } from "./Sidebar";
-
+import { Select, MenuItem } from "@mui/material";
+import { useThemeMode } from "../../theme/ThemeContext";
 const Topbar = () => {
+
+    const { mode, setMode } = useThemeMode();
+
   return (
+    <>
     <AppBar
       position="fixed"
       sx={{
@@ -20,6 +25,22 @@ const Topbar = () => {
         </Typography>
       </Toolbar>
     </AppBar>
+
+        <AppBar position="fixed">
+      <Toolbar sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Select
+          value={mode}
+          onChange={(e) => setMode(e.target.value)}
+          size="small"
+          sx={{ bgcolor: "white", borderRadius: 1 }}
+        >
+          <MenuItem value="light">Light</MenuItem>
+          <MenuItem value="dark">Dark</MenuItem>
+          <MenuItem value="system">System</MenuItem>
+        </Select>
+      </Toolbar>
+    </AppBar>
+    </>
   );
 };
 
