@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo, useState, useEffect } from "react";
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { useMediaQuery } from "@mui/material";
 
 const ThemeContext = createContext();
 

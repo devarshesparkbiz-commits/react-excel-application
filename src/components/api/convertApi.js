@@ -11,3 +11,8 @@ export const convertToWord = async (data) => {
 export const convertToPdf = async (data) => {
   return await API.post("/convert/pdf", data, { responseType: "blob" });
 };
+
+export const postData = (url, data) => API.post(url, data);
+export const getData = (url, config = {}) => API.get(url, config);
+export const saveData = (url) => API.get(url);
+
