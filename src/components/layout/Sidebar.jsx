@@ -1,6 +1,6 @@
 import {
   Drawer, List, ListItemButton, ListItemIcon,
-  ListItemText, Toolbar, IconButton, Box
+  ListItemText, Toolbar, IconButton,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -34,13 +34,19 @@ const XmlIcon = () => (
     <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
   </svg>
 );
+const JsonIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M5 3h2v2H5v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5h2v2H5c-1.07-.27-2-.9-2-2v-4a2 2 0 0 0-2-2H0v-2h1a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2m14 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3h2M12 15a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m-4 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1m8 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1z"/>
+  </svg>
+);
 
 const menu = [
-  { label: "Dashboard", Icon: DashboardIcon, path: "/",       exact: true  },
-  { label: "Excel",     Icon: ExcelIcon,     path: "/excel",  exact: false },
-  { label: "PDF/Word",  Icon: ConvertIcon,   path: "/convert",exact: false },
-  { label: "Forms",     Icon: FormIcon,      path: "/forms",  exact: false },
-  { label: "XML",       Icon: XmlIcon,       path: "/xml",    exact: false },
+  { label: "Dashboard", Icon: DashboardIcon, path: "/",        exact: true  },
+  { label: "Excel",     Icon: ExcelIcon,     path: "/excel",   exact: false },
+  { label: "PDF/Word",  Icon: ConvertIcon,   path: "/convert", exact: false },
+  { label: "Forms",     Icon: FormIcon,      path: "/forms",   exact: false },
+  { label: "XML",       Icon: XmlIcon,       path: "/xml",     exact: false },
+  { label: "JSON",      Icon: JsonIcon,      path: "/json",    exact: false },
 ];
 
 const Sidebar = () => {
