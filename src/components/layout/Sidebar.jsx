@@ -1,10 +1,10 @@
 import {
-  Box, Drawer, IconButton, List, ListItemButton,
-  ListItemIcon, ListItemText, Toolbar
+  Drawer, List, ListItemButton, ListItemIcon,
+  ListItemText, Toolbar, IconButton, Box
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 
 export const expandedWidth  = 240;
 export const collapsedWidth = 70;
@@ -29,12 +29,18 @@ const FormIcon = () => (
     <path d="M19 2H8c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V6l-4-4zm0 18H8V4h9v3h3v13zM10 9h7v2h-7V9zm0 4h7v2h-7v-2zm0 4h5v2h-5v-2z"/>
   </svg>
 );
+const XmlIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+  </svg>
+);
 
 const menu = [
   { label: "Dashboard", Icon: DashboardIcon, path: "/",       exact: true  },
   { label: "Excel",     Icon: ExcelIcon,     path: "/excel",  exact: false },
   { label: "PDF/Word",  Icon: ConvertIcon,   path: "/convert",exact: false },
   { label: "Forms",     Icon: FormIcon,      path: "/forms",  exact: false },
+  { label: "XML",       Icon: XmlIcon,       path: "/xml",    exact: false },
 ];
 
 const Sidebar = () => {
@@ -62,7 +68,6 @@ const Sidebar = () => {
           <MenuIcon />
         </IconButton>
       </Toolbar>
-
       <List>
         {menu.map(({ label, Icon, path, exact }) => (
           <ListItemButton
