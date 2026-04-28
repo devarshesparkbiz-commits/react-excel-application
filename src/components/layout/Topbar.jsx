@@ -1,46 +1,55 @@
-import { AppBar, Toolbar, Typography } from "@mui/material";
-import { expandedWidth } from "./Sidebar";
-import { Select, MenuItem } from "@mui/material";
-import { useThemeMode } from "../../theme/ThemeContext";
-const Topbar = () => {
+import { AppBar, Toolbar, Typography, Box } from "@mui/material";
+import { expandedWidth, collapsedWidth } from "./Sidebar";
+import { useAuth } from "../../theme/AuthContext";
+import { useLocation } from "react-router-dom";
 
-    const { mode, setMode } = useThemeMode();
+const Topbar = ({ collapsed }) => {
+  const { user } = useAuth();
+  const location = useLocation();
+  const width = collapsed ? collapsedWidth : expandedWidth;
+
+  const getPageTitle = () => {
+    const path = location.pathname;
+    if (path === '/') return 'Dashboard';
+    if (path.includes('excel')) return 'Excel Generation';
+    if (path.includes('json')) return 'JSON Beautifier';
+    if (path.includes('xml')) return 'XML Builder';
+    if (path.includes('diff')) return 'Text Difference';
+    if (path.includes('forms')) return 'Forms List';
+    if (path.includes('convert')) return 'Text to Document';
+    if (path.includes('datetime')) return 'Date & Time';
+    if (path.includes('units')) return 'Unit Converter';
+    if (path.includes('calculator')) return 'Calculator';
+    if (path.includes('color')) return 'Color Picker';
+    if (path.includes('admin')) return 'Admin Panel';
+    return 'DataTools';
+  };
 
   return (
-    <>
     <AppBar
       position="fixed"
       sx={{
-        ml: `${expandedWidth}px`,
-        width: `calc(100% - ${expandedWidth}px)`,
-        backgroundColor: "#fff",
-        color: "#111",
-        boxShadow: "0 1px 4px rgba(0,0,0,0.1)"
-        
+        width: `calc(100% - ${width}px)`,
+        ml: `${width}px`,
+        bgcolor: 'background.paper',
+        color: 'text.primary',
+        boxShadow: 'none',
+        borderBottom: '1px solid',
+        borderColor: 'divider',
+        transition: "width 0.3s cubic-bezier(0.4, 0, 0.2, 1), margin 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
       }}
     >
-      <Toolbar>
-        <Typography variant="h6" fontWeight={600}>
-          Excel Application
+      <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <Typography variant="h6" fontWeight={700}>
+          {getPageTitle()}
         </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Typography variant="body2" color="text.secondary">
+            Welcome, <b>{user?.username}</b>
+          </Typography>
+        </Box>
       </Toolbar>
     </AppBar>
-
-        <AppBar position="fixed">
-      <Toolbar sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <Select
-          value={mode}
-          onChange={(e) => setMode(e.target.value)}
-          size="small"
-          sx={{ bgcolor: "white", borderRadius: 1 }}
-        >
-          <MenuItem value="light">Light</MenuItem>
-          <MenuItem value="dark">Dark</MenuItem>
-          <MenuItem value="system">System</MenuItem>
-        </Select>
-      </Toolbar>
-    </AppBar>
-    </>
   );
 };
 
