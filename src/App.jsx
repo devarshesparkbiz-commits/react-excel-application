@@ -8,6 +8,7 @@ import FormsList       from "./pages/forms/FormsList";
 import FormBuilder     from "./pages/forms/FormBuilder";
 import XmlGeneration   from "./pages/XmlGeneration";
 import JsonBeautifier   from "./pages/JsonBeautifier";
+import TextDifferenceChecker    from "./pages/TextDifferenceChecker";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/forms/edit/:id" element={<FormBuilder />} />
           <Route path="/xml"            element={<XmlGeneration />} />
           <Route path="/json"           element={<JsonBeautifier />} />
+          <Route path="/diff"           element={<TextDifferenceChecker />} />
         </Routes>
       </DashboardLayout>
     </Router>
