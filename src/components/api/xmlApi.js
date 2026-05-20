@@ -1,21 +1,15 @@
-const BASE = "http://localhost:8080";
+import axiosInstance from "../../api/axiosInstance";
 
 export const generateXml = async (payload) => {
-  const res = await fetch(`${BASE}/xml/generate`, {
-    method:  "POST",
-    headers: { "Content-Type": "application/json" },
-    body:    JSON.stringify(payload),
+  const response = await axiosInstance.post("/xml/generate", payload, {
+    responseType: "blob",
   });
-  if (!res.ok) throw new Error(await res.text());
-  return res.blob();
+  return response.data;
 };
 
 export const previewXml = async (payload) => {
-  const res = await fetch(`${BASE}/xml/preview`, {
-    method:  "POST",
-    headers: { "Content-Type": "application/json" },
-    body:    JSON.stringify(payload),
+  const response = await axiosInstance.post("/xml/preview", payload, {
+    responseType: "text",
   });
-  if (!res.ok) throw new Error(await res.text());
-  return res.text();
+  return response.data;
 };
